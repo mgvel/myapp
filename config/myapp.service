@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI Container Server for Flask app
+After=network.target
+
+[Service]
+User=flask
+Group=nginx
+WorkingDirectory=/home/flask/myapp
+Environment="PATH=/home/flask/myapp/venv/bin"
+ExecStart=/home/flask/myapp/venv/bin/uwsgi --ini config/myapp.ini
+
+[Install]
+WantedBy=multi-user.target
